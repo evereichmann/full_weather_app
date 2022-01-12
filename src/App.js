@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route} from 'react-router-dom';
+import MonthWeather from './components/MonthWeather';
+import HourlyFourDay from './components/HourlyFourDay';
+import CurrentWeather from './components/CurrentWeather';
+import AirQuality from './components/AirQuality';
+import Main from './components/Main';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  render(){
+    return (
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={<Main/>}/>
+          <Route exact path="/current_weather" element={<CurrentWeather/>}/>
+          <Route exact path="/hourly_four_day" element={<HourlyFourDay/>}/>
+          <Route exact path="/month_weather" element={<MonthWeather/>}/>
+          <Route exact path="/air_quality" element={<AirQuality/>}/>
+        </Routes>
+      </div>
+    );
+  }
 }
 
 export default App;
+
+
+
