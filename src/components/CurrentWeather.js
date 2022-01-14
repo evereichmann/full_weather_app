@@ -26,7 +26,14 @@ const search = evt => {
             <h2>${weather.weather[0].description}</h2>
           </div>  
         `);
-      })   
+      })
+      .catch(error => {
+        dataDiv.innerHTML = (`
+          <div>
+            <h1>Opps sorry, there was an error can you re-enter location</h1>
+          </div>  
+        `);
+      });
  }
 
 
