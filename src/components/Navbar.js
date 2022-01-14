@@ -6,7 +6,7 @@ function Navbar() {
     return (
       <div className="Navbar">
         <ul>
-            <Link to="/"><li>Main</li></Link>
+            <li><Link to="/">Main</Link></li>
             <li><Link to="/current_weather">Current Weather</Link></li>
             <li><Link to="/hourly_four_day">Hourly Four Day</Link></li>
             <li><Link to="/month_weather">Month Weather</Link></li>
