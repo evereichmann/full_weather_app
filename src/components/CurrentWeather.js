@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState }  from 'react';
 import Navbar from './Navbar';
 
 function CurrentWeather() {
@@ -11,27 +11,22 @@ const api = {
 const [value, setValue] = useState('');
 const dataDiv = document.getElementById('weather-data');
 
-const search = evt => { 
+const search = () => { 
     fetch(`${api.base}/weather?q=${value}&units=imperial&APPID=${api.key}`)
       .then(resp => resp.json())
       .then(weather => {
         setValue('');
         
         dataDiv.innerHTML = (`
-          <div>
             <h1>${Math.round(weather.main.temp)}°F</h1>
             <h3>${Math.round(weather.main.temp_max)}°F</h3>
             <h3>${Math.round(weather.main.temp_min)}°F</h3>
             <img src='http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png'></img>
             <h2>${weather.weather[0].description}</h2>
-          </div>  
         `);
-      })
-      .catch(error => {
+      }).catch( error => {
         dataDiv.innerHTML = (`
-          <div>
-            <h1>Opps sorry, there was an error can you re-enter location</h1>
-          </div>  
+        <h1>Opps sorry, there was an error can you re-enter location</h1>
         `);
       });
  }
@@ -40,8 +35,8 @@ const search = evt => {
     return (
       <div className="CurrentWeather">
       <Navbar/>
-        <input placeholder='Location' type="text" className="search-bar" onChange={e => setValue(e.target.value)} value={value} />
-        <button type="submit" onClick={search}>Search</button>
+        <input placeholder='Location' type="text" className="search-bar" onChange={e => setValue(e.target.value)} value={value}/>
+        <button type="submit" onClick={search} >Search</button>
         <div id='weather-data'>
         </div> 
       </div>
